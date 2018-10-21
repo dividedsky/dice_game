@@ -14,9 +14,8 @@ class App extends Component {
 
   rollDie = (e) => {
     const number = Math.floor(Math.random() * 6 + 1);
-    console.log(number);
-    console.log(e.target.value);
-    this.setState({ die1: number });
+    console.log(e.target.id);
+    this.setState({ [e.target.id]: number });
   }
 
   render() {
@@ -24,7 +23,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-        <Die rollDie={this.rollDie} number={this.state.die1}/>
+        <Die id="die1" rollDie={this.rollDie} number={this.state.die1}/>
+        <Die id="die2" rollDie={this.rollDie} number={this.state.die2}/>
         </header>
       </div>
     );

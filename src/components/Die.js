@@ -15,9 +15,8 @@ const StyledDie = styled.div`
 `;
 
 const Die = (props) => {
-    const randomNum  = Math.floor(Math.random() * 6 + 1);
     return (
-        <StyledDie onClick={props.rollDie}>{props.number}</StyledDie>
+        <StyledDie id={props.id} onClick={props.rollDie}>{props.number}</StyledDie>
     )
 }
 
