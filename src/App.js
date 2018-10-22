@@ -19,22 +19,11 @@ class App extends Component {
     }
   }
 
-  getTotal() {
-    const nums = Object.values(this.state.dice);
-    console.log('nums:', nums);
-    const sum = nums.reduce((t, n) => t + n);
-    return sum;
-  }
-
   rollDie = (e) => {
-    console.log('roll');
-    console.log(this.state.dice[e.target.id]);
     const number = Math.floor(Math.random() * 6 + 1);
     const newDice = {...this.state.dice, [e.target.id]: number}
     this.setState({ dice: newDice });
-    console.log(this.state.dice);
-    this.setState({ total: this.getTotal() });
-    console.log(this.state.dice);
+
   }
 
   // dice should be mapped!
@@ -51,7 +40,7 @@ class App extends Component {
         <Die classnName="p1dice" id="die5" rollDie={this.rollDie} number={this.state.dice.die5}/>
         <Die classnName="p1dice" id="die6" rollDie={this.rollDie} number={this.state.dice.die6}/>
       </div>
-        <p>Total: {this.state.total}</p>
+        <p>Total: {Object.values(this.state.dice).reduce((t, n) => t + n)}</p>
         </header>
       </div>
     );
